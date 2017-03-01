@@ -1,0 +1,23 @@
+{
+  "name": "dev_web_avance",
+  "version": "1.0.0",
+  "description": "## linters",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robindevouge/dev_web_avance.git"
+  },
+  "author": "Robin Devouge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robindevouge/dev_web_avance/issues"
+  },
+  "homepage": "https://github.com/robindevouge/dev_web_avance#readme",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.16.1"
+  }
+}
