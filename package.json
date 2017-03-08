@@ -2,9 +2,10 @@
   "name": "dev_web_avance",
   "version": "1.0.0",
   "description": "## linters",
-  "main": "index.html",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "./node_modules/.bin/eslint src/** || exit 0",
+    "clean": "rm -rf dist/*"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,13 @@
   },
   "homepage": "https://github.com/robindevouge/dev_web_avance#readme",
   "devDependencies": {
+    "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
-    "eslint": "^3.16.1"
+    "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.1.10",
+    "eslint": "^3.16.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-merge": "^3.0.0"
   }
 }
