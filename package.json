@@ -1,5 +1,5 @@
 {
-  "name": "heaj",
+  "name": "dev_web_avance",
   "version": "1.0.0",
   "description": "Développement web avancé - 3e année",
   "main": "index.html",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thierrymichel/heaj.git"
+    "url": "git+https://github.com/robindevouge/dev_web_avance.git"
   },
   "keywords": [
     "heaj",
@@ -22,12 +22,8 @@
     "learning",
     "threejs"
   ],
-  "author": "thierrymichel <thmichel@gmail.com> (http://thierrymichel.net)",
+  "author": "robindevouge",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/thierrymichel/heaj/issues"
-  },
-  "homepage": "https://github.com/thierrymichel/heaj#readme",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
