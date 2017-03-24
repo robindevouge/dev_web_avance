@@ -14,5 +14,3 @@ const app = new App();
 const cubeOne = new Cube('cubeOne', 100, 100, 100, 0x00ff00);
 
 app.addToScene(cubeOne.mesh);
-
-app.addLight();

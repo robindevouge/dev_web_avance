@@ -4,12 +4,17 @@ const {Stats} = require('three-stats');
 
 class App {
 	constructor() {
+
+		this.lights = [];
+
 		this.initScene();
 		this.initCamera();
 		this.initRenderer();
+		this.initLight();
 		if (global.debug){
 			this.initControls();
 			this.initStats();
+			this.addHelpers();
 		}
 
 		this.render();
@@ -46,9 +51,22 @@ class App {
 		this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 	}
 
+	initLight() {
+		const ambientLight = new THREE.AmbientLight(0xffffff, 0.6, 0, 1);
+		ambientLight.position.set(500, 500, 500);
+		this.addToScene(ambientLight);
+
+		const spotLight = new THREE.SpotLight(0xffffff, 0.6, 0, 1);
+		spotLight.position.set(-300, 300, 300);
+		spotLight.castShadow = true;
+		this.lights.push(spotLight);
+		this.addToScene(spotLight);
+	}
+
 	initRenderer() {
 		this.renderer = new THREE.WebGLRenderer();
 		this.renderer.setSize(this.width, this.height);
+		this.renderer.shadowMap.enabled = true;
 		document.body.appendChild(this.renderer.domElement);
 	}
 
@@ -58,7 +76,7 @@ class App {
 
 	initStats(){
 		this.stats = new Stats();
-		this.stats.showPanel(0); // 0 : fps | 1 :  | 2 :  | 3 :
+		this.stats.showPanel(0); // 0 : fps | 1 : ms | 2 : mb | 3+ : custom
 		document.body.appendChild(this.stats.dom);
 	}
 
@@ -78,16 +96,24 @@ class App {
 		}
 	}
 
+	addHelpers(){
+		this.lights.forEach((item) => {
+			this.addHelper(item.shadow.camera);
+		});
+	}
+
+	addHelper(camera){
+		const helper = new THREE.CameraHelper(camera);
+		this.scene.add(helper);
+	}
+
+
 	addToScene(obj) {
 		//debugger;
 		this.scene.add(obj);
 	}
 
-	addLight() {
-		this.light = new THREE.PointLight(0xffffff, 0.6, 0, 1);
-		this.light.position.set(500, 500, 500);
-		this.addToScene(this.light);
-	}
+
 }
 
 export default App
