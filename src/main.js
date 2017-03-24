@@ -7,6 +7,8 @@ import Cube from 'cube';
 
 console.info('Ready! 🚀');
 
+global.debug = true;
+
 
 const app = new App();
 const cubeOne = new Cube('cubeOne', 100, 100, 100, 0x00ff00);

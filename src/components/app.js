@@ -1,12 +1,17 @@
 import * as THREE from 'three';
 const Orbit = require('three-orbit-controls')(THREE);
+const {Stats} = require('three-stats');
 
 class App {
 	constructor() {
 		this.initScene();
 		this.initCamera();
 		this.initRenderer();
-		this.initControls();
+		if (global.debug){
+			this.initControls();
+			this.initStats();
+		}
+
 		this.render();
 
 	}
@@ -19,8 +24,10 @@ class App {
 
 		this.scene = new THREE.Scene();
 
-		window.scene = this.scene;
-		window.THREE = THREE;
+		if (global.debug){
+			window.scene = this.scene;
+			window.THREE = THREE;
+		}
 	}
 
 	initCamera() {
@@ -49,11 +56,26 @@ class App {
 		this.controls = new Orbit(this.camera, this.renderer.domElement);
 	}
 
+	initStats(){
+		this.stats = new Stats();
+		this.stats.showPanel(0); // 0 : fps | 1 :  | 2 :  | 3 :
+		document.body.appendChild(this.stats.dom);
+	}
+
 	render() {
 		requestAnimationFrame(() => {
 			this.render();
 		});
+
+		if(this.stats) {
+			this.stats.begin();
+		}
+
 		this.renderer.render(this.scene, this.camera);
+
+		if(this.stats) {
+			this.stats.end();
+		}
 	}
 
 	addToScene(obj) {

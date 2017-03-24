@@ -12,7 +12,7 @@ class Cube {
 	create(name) {
 		// directly create the cube when calling a new instance of Cube then returning it in the const
 		const geometry = new THREE.BoxBufferGeometry(this.width, this.height, this.depth);
-		const material = new THREE.MeshBasicMaterial({
+		const material = new THREE.MeshLambertMaterial({
 			color: this.color,
 			wireframe: false
 		});
