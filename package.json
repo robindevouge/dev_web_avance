@@ -30,6 +30,7 @@
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.1.10",
     "eslint": "^3.16.1",
+    "lodash": "^4.17.4",
     "markdownlint-cli": "^0.2.0",
     "three-stats": "^1.0.1",
     "webpack": "^2.2.1",

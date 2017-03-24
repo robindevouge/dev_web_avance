@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 const Orbit = require('three-orbit-controls')(THREE);
 const {Stats} = require('three-stats');
+import debounce from 'lodash/debounce';
 
 class App {
 	constructor() {
@@ -11,6 +12,7 @@ class App {
 		this.initCamera();
 		this.initRenderer();
 		this.initLight();
+		this.initListeners();
 		if (global.debug){
 			this.initControls();
 			this.initStats();
@@ -61,6 +63,24 @@ class App {
 		spotLight.castShadow = true;
 		this.lights.push(spotLight);
 		this.addToScene(spotLight);
+	}
+
+	initListeners(){
+		//window.addEventListener('resize', function(){}) //es5 : scope is window
+		//window.addEventListener('resize', () => {}) // es6 : scope is Class (= App)
+
+		window.addEventListener(
+			'resize',
+			debounce(this.onResize.bind(this), 500)
+		);
+	}
+
+	onResize(){
+		this.width = window.innerWidth;
+		this.height = window.innerHeight;
+		this.renderer.setSize(this.width, this.height);
+		this.camera.aspect = this.width/this.height;
+		this.camera.updateProjectionMatrix();
 	}
 
 	initRenderer() {
